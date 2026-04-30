@@ -18,9 +18,4 @@ export default defineConfig({
       },
     },
   },
-  build: {
-    rollupOptions: {
-      external: ['vee-validate'],
-    },
-  },
 });
