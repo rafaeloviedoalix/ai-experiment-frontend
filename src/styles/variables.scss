@@ -1,0 +1,65 @@
+@use 'sass:map';
+
+$ap-text-colors: (
+  light-text: #727272,
+  dark-text: #4a4a4a,
+  black-text: #28292c,
+  link: #0369a3,
+  link-hover: #024870,
+);
+
+$ap-banner-colors: (
+  msg-info-text: #3b4648,
+  msg-info-stroke: #b0deeb,
+  msg-info-background: #f6fdff,
+  msg-error-text: #bf494e,
+  msg-error-stroke: #f1b5b7,
+  msg-error-background: #fff5f6,
+  msg-warning-text: #b86a0f,
+  msg-warning-stroke: #ffd0a7,
+  msg-warning-background: #fffcf8,
+  msg-success-text: #3f702a,
+  msg-success-stroke: #a5d192,
+  msg-success-background: #f1f6f0,
+);
+
+$ap-global-colors: (
+  alix-green: #5cb335,
+  alix-gray: #878787,
+  black-1: #000000,
+  black-2: #333333,
+  data-color: #181d1f,
+  white-1: #ffffff,
+  red-1: #f99397,
+  red-2: #cb282e,
+  red-3: #ac272c,
+  orange-1: #ce7309,
+  orange-2: #a55d0a,
+  green-1: #dff0db,
+  green-2: #8dca7e,
+  green-3: #498e2b,
+  green-4: #3f7b25,
+);
+
+$ap-context-colors: (
+  row: #f7f7f7,
+  background: #f1f1f1,
+  lines-gray: #cccccc,
+  border-color: #babfc7,
+  disabled-gray: #b2b2b2,
+  cancel-button-gray: #888888,
+  background-gray-2: #e4e4e4,
+);
+
+$ap-box-shadows: (
+  box-shadow-1: 0px 4px 4px 0px #00000040,
+);
+
+$ap-theme: map.merge(
+  map.merge(map.merge(map.merge($ap-text-colors, $ap-banner-colors), $ap-global-colors), $ap-context-colors),
+  $ap-box-shadows
+);
+
+@function ap($key) {
+  @return map.get($ap-theme, $key);
+}

@@ -1,0 +1,128 @@
+@use './variables' as *;
+
+// ---- AP Button base mixin ----
+@mixin ap-btn-base {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 13px;
+  border-radius: 2px;
+  padding: 9px 20px;
+  min-width: 106px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  height: 31px;
+  text-decoration: none;
+}
+
+// Primary – solid green (submit / confirm)
+.ap-btn-primary-submit {
+  @include ap-btn-base;
+  border: 1px solid ap(green-3);
+  background-color: ap(green-3);
+  color: ap(white-1);
+
+  &:hover:not(:disabled) {
+    background-color: ap(green-4);
+    border-color: ap(green-4);
+  }
+
+  &:disabled {
+    border-color: ap(green-2);
+    background-color: ap(green-2);
+    cursor: default;
+  }
+}
+
+// Primary – solid gray (cancel)
+.ap-btn-primary-cancel {
+  @include ap-btn-base;
+  border: 1px solid ap(cancel-button-gray);
+  background-color: ap(cancel-button-gray);
+  color: ap(white-1);
+
+  &:hover:not(:disabled) {
+    background-color: ap(light-text);
+    border-color: ap(light-text);
+  }
+
+  &:disabled {
+    border-color: ap(lines-gray);
+    background-color: ap(lines-gray);
+    cursor: default;
+  }
+}
+
+// Secondary – outlined green
+.ap-btn-secondary-submit {
+  @include ap-btn-base;
+  border: 1px solid ap(green-3);
+  background-color: ap(white-1);
+  color: ap(green-3);
+
+  &:hover:not(:disabled) {
+    background-color: ap(green-3);
+    color: ap(white-1);
+  }
+
+  &:disabled {
+    color: ap(green-2);
+    border-color: ap(green-2);
+    cursor: default;
+  }
+}
+
+// ---- Scrollbar ----
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: ap(disabled-gray);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: ap(cancel-button-gray);
+}
+
+// ---- AP separator ----
+.ap-separator {
+  display: inline-block;
+  width: 0;
+  height: 21px;
+
+  &-green {
+    border-left: 2px solid ap(alix-green);
+  }
+
+  &-gray {
+    border-left: 2px solid ap(light-text);
+  }
+
+  &-light-gray {
+    border-left: 2px solid ap(lines-gray);
+  }
+}
+
+// ---- Utility ----
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+// ---- Vue transitions ----
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
